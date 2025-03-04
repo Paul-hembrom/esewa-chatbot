@@ -436,73 +436,132 @@ chat_html = """
     <title>ESEWA-CHATBOT</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f6;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background: #f0f0f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark {
+            background: #202123;
+            color: #d1d5db;
         }
         .chat-container {
-            max-width: 600px;
+            flex: 1;
+            max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         .chat-header {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+            padding: 10px 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #10a37f; /* ChatGPT green */
         }
         .chat-box {
-            max-height: 400px;
+            flex: 1;
             overflow-y: auto;
-            margin-bottom: 20px;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #fafafa;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        body.dark .chat-box {
+            background: #343541;
+            box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
         }
         .message {
+            max-width: 70%;
             margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease-in;
         }
         .user-message {
-            background: #007bff;
+            background: #10a37f; /* ChatGPT user green */
             color: white;
-            text-align: right;
-        }
-        .bot-message {
-            background: #e9ecef;
-            color: #333;
+            margin-left: auto;
             text-align: left;
         }
+        .bot-message {
+            background: #ececf1;
+            color: #333;
+            margin-right: auto;
+            text-align: left;
+        }
+        body.dark .bot-message {
+            background: #444654;
+            color: #d1d5db;
+        }
         .input-container {
+            max-width: 800px;
+            margin: 0 auto 20px;
             display: flex;
             gap: 10px;
+            padding: 0 20px;
         }
-        input[type="text"] {
+        .input-wrapper {
             flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            position: relative;
         }
-        button {
-            padding: 10px 20px;
-            background: #007bff;
+        textarea {
+            width: 100%;
+            min-height: 50px;
+            max-height: 150px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            color: #333;
+            box-sizing: border-box;
+        }
+        body.dark textarea {
+            background: #343541;
+            color: #d1d5db;
+            border-color: #555;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #10a37f;
+            box-shadow: 0 0 5px rgba(16, 163, 127, 0.5);
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 8px 16px;
+            background: #10a37f;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
+            font-size: 14px;
         }
-        button:hover {
-            background: #0056b3;
+        .mode-toggle:hover {
+            background: #0d8c66;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+    <button class="mode-toggle" onclick="toggleMode()">Dark Mode</button>
     <div class="chat-container">
         <h2 class="chat-header">ESEWA-CHATBOT 🤖</h2>
         <div class="chat-box" id="chat-box">
@@ -513,8 +572,9 @@ chat_html = """
             {% endfor %}
         </div>
         <div class="input-container">
-            <input type="text" id="query" placeholder="Ask me anything about eSewa..." onkeypress="if(event.key === 'Enter') sendMessage()">
-            <button onclick="sendMessage()">Send</button>
+            <div class="input-wrapper">
+                <textarea id="query" placeholder="Ask me anything about eSewa..." onkeypress="if(event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); sendMessage(); }"></textarea>
+            </div>
         </div>
     </div>
 
@@ -524,15 +584,12 @@ chat_html = """
             const query = queryInput.value.trim();
             if (!query) return;
 
-            // Add user message to chat
             const chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `<div class="message user-message">${query}</div>`;
             queryInput.value = '';
 
-            // Scroll to bottom
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Send query to server
             fetch('/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -547,6 +604,12 @@ chat_html = """
                 chatBox.innerHTML += `<div class="message bot-message">Oops, something went wrong!</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             });
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle('dark');
+            const button = document.querySelector('.mode-toggle');
+            button.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
         }
     </script>
 </body>
