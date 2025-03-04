@@ -1,0 +1,14 @@
+# created by virtualenv automatically
+# Ignore SSL certificates
+cert.pem
+key.pem
+
+# Ignore virtual environment
+.venv/
+
+# Ignore PyCharm files
+.idea/
+
+# Ignore temporary files
+*.pyc
+__pycache__/
