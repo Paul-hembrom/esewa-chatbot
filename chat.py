@@ -79,7 +79,7 @@ topup_recharge_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Top up NPR 100 for Ncell!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother','friend','dear'), an example (e.g., 'Top up NPR 100 for Ncell!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -115,7 +115,7 @@ electricity_water_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Pay NPR 500 for NEA!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother', 'friend', 'dear'), an example (e.g., 'Pay NPR 500 for NEA!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -151,7 +151,7 @@ tv_payment_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Recharge Dish Home for NPR 300!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother','friend','dear'), an example (e.g., 'Recharge Dish Home for NPR 300!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -187,7 +187,7 @@ bus_ticket_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Book a NPR 800 trip to Pokhara!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother', 'friend', 'dear'), an example (e.g., 'Book a NPR 800 trip to Pokhara!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -223,7 +223,7 @@ education_payment_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Pay NPR 500 for TU!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother','friend', 'dear'), an example (e.g., 'Pay NPR 500 for TU!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -259,7 +259,7 @@ dofe_insurance_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Pay NPR 2000 for DOFE!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother', 'friend', 'dear'), an example (e.g., 'Pay NPR 2000 for DOFE!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -295,7 +295,7 @@ financial_services_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Pay NPR 5000 EMI!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother', 'friend', 'dear'), an example (e.g., 'Pay NPR 5000 EMI!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -331,7 +331,7 @@ movies_entertainment_prompt = PromptTemplate(
     ### Execution:
     - Analyze '{query}' for intent—greetings, purpose, identity, or service specifics. Blend if mixed.
     - Use {products} naturally—list or focus as needed.
-    - Add human flair: A friendly word (e.g., 'brother'), an example (e.g., 'Book QFX for NPR 300!'), or a nudge (e.g., 'What else can I do for you?').
+    - Add human flair: A friendly word (e.g., 'brother', 'friend', 'dear'), an example (e.g., 'Book QFX for NPR 300!'), or a nudge (e.g., 'What else can I do for you?').
     - Keep it warm, conversational, and clear—like a pal. End with: 'Did I get that right? What’s next?' if unsure.
 
     Go for it—make it feel human and awesome!
@@ -391,7 +391,7 @@ def handle_query(query):
         product_list = ", ".join(products) if products else "No products available yet"
         chain = LLMChain(llm=llm, prompt=service_prompts[service])
         return chain.run(query=query, products=product_list)
-    return "Hey there, brother! I’m your eSewa Chatbot Assistant—here to help with stuff like Topup & Recharge, Electricity & Water, TV Payments, Bus Tickets, Education Fees, DOFE/Insurance, Financial Services, and Movies & Entertainment. What’s on your mind today?"
+    return "Hey there! I’m your eSewa Chatbot Assistant—here to help with stuff like Topup & Recharge, Electricity & Water, TV Payments, Bus Tickets, Education Fees, DOFE/Insurance, Financial Services, and Movies & Entertainment. What’s on your mind today?"
 
 # HTML Template for Chat UI
 chat_html = """
